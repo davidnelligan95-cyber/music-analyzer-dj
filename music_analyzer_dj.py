@@ -479,7 +479,8 @@ class MusicAnalyzerDJ:
         
         self.create_browse_tab_content()
         self.create_prepare_tab_content()
-        self.create_history_tab_content()def show_context_menu(self, event):
+        self.create_history_tab_content()
+        def show_context_menu(self, event):
         """RIGHT-CLICK CONTEXT MENU for tracks"""
         item = self.tree.identify_row(event.y)
         if item:
