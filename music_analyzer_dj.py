@@ -707,7 +707,8 @@ class MusicAnalyzerDJ:
                 self.tree.delete(selection[0])
                 # Also remove from self.tracks if you want it permanently gone from internal list
                 # (You'd need to store more than just filename in treeview for easy removal)
-                messagebox.showinfo("Removed", "Track removed from library list.")def save_crate(self):
+                messagebox.showinfo("Removed", "Track removed from library list.")
+                def save_crate(self):
         """Save the current crate/library to a file"""
         if not self.tracks:
             messagebox.showwarning("No Tracks", "No tracks in the library to save!")
@@ -820,7 +821,8 @@ Esc        - Exit Fullscreen"""
                             "• Serato-style waveforms (simulated)\n" +
                             "• Comprehensive library management\n" +
                             "• Dropdown menus & right-click context menus\n" +
-                            "• Placeholder functions for advanced analysis, tagging, etc.")# Configure ttk styles for Serato look
+                            "• Placeholder functions for advanced analysis, tagging, etc.")
+        # Configure ttk styles for Serato look
 def configure_styles():
     """Configure ttk styles for Serato DJ appearance"""
     style = ttk.Style()
