@@ -278,6 +278,8 @@ class MusicAnalyzerDJ:
         self.root.geometry("1600x1000")
         self.root.configure(bg='#0a0a0a')
         self.tracks = [] # Stores full paths of loaded tracks
+        self.deck1 = None # Will store SeratoDeck instance for Deck 1
+        self.deck2 = None # Will store SeratoDeck instance for Deck 2
         self.setup_ui()
     
     def setup_ui(self):
@@ -476,59 +478,7 @@ class MusicAnalyzerDJ:
         
         self.create_browse_tab_content()
         self.create_prepare_tab_content()
-        self.create_history_tab_content()def switch_browser_tab(self, tab_name):
-        """Switch between browser tabs (Files, Browse, Prepare, History)"""
-        # Reset button colors
-        for btn in [self.files_tab_btn, self.browse_tab_btn, self.prepare_tab_btn, self.history_tab_btn]:
-            if btn:
-                btn.config(bg='#2a2a2a')
-        
-        # Hide all content frames
-        self.files_sidebar.pack_forget()
-        self.list_frame.pack_forget()
-        self.browse_frame.pack_forget()
-        self.prepare_frame.pack_forget()
-        self.history_frame.pack_forget()
-
-        # Show selected tab content
-        if tab_name == "Files":
-            self.files_tab_btn.config(bg='#0066cc')
-            self.files_sidebar.pack(side=tk.LEFT, fill=tk.Y)
-            self.list_frame.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
-        elif tab_name == "Browse":
-            self.browse_tab_btn.config(bg='#0066cc')
-            self.browse_frame.pack(fill=tk.BOTH, expand=True)
-            tk.Label(self.browse_frame, text="Browse Tab Content (Artists, Albums, Genres)",
-                     bg='#1a1a1a', fg='white', font=("Arial", 12)).pack(expand=True)
-        elif tab_name == "Prepare":
-            self.prepare_tab_btn.config(bg='#0066cc')
-            self.prepare_frame.pack(fill=tk.BOTH, expand=True)
-            tk.Label(self.prepare_frame, text="Prepare Tab Content (Drag tracks here to prep for mix)",
-                     bg='#1a1a1a', fg='white', font=("Arial", 12)).pack(expand=True)
-        elif tab_name == "History":
-            self.history_tab_btn.config(bg='#0066cc')
-            self.history_frame.pack(fill=tk.BOTH, expand=True)
-            tk.Label(self.history_frame, text="History Tab Content (Past played sets)",
-                     bg='#1a1a1a', fg='white', font=("Arial", 12)).pack(expand=True)
-        
-        self.current_browser_tab.set(tab_name)
-
-    def create_browse_tab_content(self):
-        """Placeholder for Browse tab content"""
-        # This frame is already created in setup_ui, just add content if needed
-        pass
-
-    def create_prepare_tab_content(self):
-        """Placeholder for Prepare tab content"""
-        # This frame is already created in setup_ui, just add content if needed
-        pass
-
-    def create_history_tab_content(self):
-        """Placeholder for History tab content"""
-        # This frame is already created in setup_ui, just add content if needed
-        pass
-
-    def show_context_menu(self, event):
+        self.create_history_tab_content()def show_context_menu(self, event):
         """RIGHT-CLICK CONTEXT MENU for tracks"""
         item = self.tree.identify_row(event.y)
         if item:
@@ -868,51 +818,7 @@ Esc        - Exit Fullscreen"""
                             "• Serato-style waveforms (simulated)\n" +
                             "• Comprehensive library management\n" +
                             "• Dropdown menus & right-click context menus\n" +
-                            "• Placeholder functions for advanced analysis, tagging, etc.")
-
-    def switch_browser_tab(self, tab_name):
-        """Switch between browser tabs (Files, Browse, Prepare, History)"""
-        # Reset button colors
-        for btn in [self.files_tab_btn, self.browse_tab_btn, self.prepare_tab_btn, self.history_tab_btn]:
-            if btn:
-                btn.config(bg='#2a2a2a')
-        
-        # Hide all content frames
-        self.files_sidebar.pack_forget()
-        self.list_frame.pack_forget()
-        self.browse_frame.pack_forget()
-        self.prepare_frame.pack_forget()
-        self.history_frame.pack_forget()
-
-        # Show selected tab content
-        if tab_name == "Files":
-            self.files_tab_btn.config(bg='#0066cc')
-            self.files_sidebar.pack(side=tk.LEFT, fill=tk.Y)
-            self.list_frame.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
-        elif tab_name == "Browse":
-            self.browse_tab_btn.config(bg='#0066cc')
-            self.browse_frame.pack(fill=tk.BOTH, expand=True)
-            tk.Label(self.browse_frame, text="Browse Tab Content (Artists, Albums, Genres)",
-                     bg='#1a1a1a', fg='white', font=("Arial", 12)).pack(expand=True)
-        elif tab_name == "Prepare":
-            self.prepare_tab_btn.config(bg='#0066cc')
-            self.prepare_frame.pack(fill=tk.BOTH, expand=True)
-            tk.Label(self.prepare_frame, text="Prepare Tab Content (Drag tracks here to prep for mix)",
-                     bg='#1a1a1a', fg='white', font=("Arial", 12)).pack(expand=True)
-        elif tab_name == "History":
-            self.history_tab_btn.config(bg='#0066cc')
-            self.history_frame.pack(fill=tk.BOTH, expand=True)
-            tk.Label(self.history_frame, text="History Tab Content (Past played sets)",
-                     bg='#1a1a1a', fg='white', font=("Arial", 12)).pack(expand=True)
-        
-        self.current_browser_tab.set(tab_name)
-
-    def on_folder_click(self, event):
-        """Handle folder click in browser treeview"""
-        selection = self.folder_tree.selection()
-        if selection:
-            item_text = self.folder_tree.item(selection[0], "text")
-            messagebox.showinfo("Folder Selected", f"Selected: {item_text}\n\n(This would load tracks from the selected folder/crate)")# Configure ttk styles for Serato look
+                            "• Placeholder functions for advanced analysis, tagging, etc.")# Configure ttk styles for Serato look
 def configure_styles():
     """Configure ttk styles for Serato DJ appearance"""
     style = ttk.Style()
