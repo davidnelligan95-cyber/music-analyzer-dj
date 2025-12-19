@@ -194,7 +194,8 @@ class SeratoDeck:
         messagebox.showinfo("Hot Cue", f"Deck {self.deck_number}: Hot cue {number} set")
     
     def clear_hotcues(self):
-        messagebox.showinfo("Clear", f"Deck {self.deck_number}: All hot cues cleared")class SeratoWaveform:
+        messagebox.showinfo("Clear", f"Deck {self.deck_number}: All hot cues cleared")
+        class SeratoWaveform:
     """Serato-style vertical waveform display in the center"""
     def __init__(self, parent):
         self.frame = tk.Frame(parent, bg='#0a0a0a')
